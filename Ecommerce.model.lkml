@@ -10,7 +10,7 @@ datagroup: chad_workspace_default_datagroup {
 
 persist_with: chad_workspace_default_datagroup
 
-explore: customers {}
+#explore: customers {}
 
 # - explore: adwords_ad_performance_report
 
