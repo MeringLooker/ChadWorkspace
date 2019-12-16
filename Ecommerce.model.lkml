@@ -11,7 +11,7 @@ datagroup: chad_workspace_default_datagroup {
 persist_with: chad_workspace_default_datagroup
 
 explore: customers{
-  label: "Customers"
+  label: "Shopping"
 
 join: orders {
   view_label: "Orders"
@@ -19,27 +19,28 @@ join: orders {
   sql_on: ${customers.cust_id}=${orders.cust_id} ;;
   relationship: one_to_many
   }
-}
-explore: orderitems {
-  label: "Order Items"
 
-  join: products{
+  join: orderitems {
+    type: left_outer
+    sql_on: ${orders.order_num}=${orderitems.order_num}  ;;
+    relationship: one_to_many
+  }
+
+  join: products {
     view_label: "Products"
     type: left_outer
     sql_on: ${orderitems.prod_id}=${products.prod_id} ;;
     relationship: one_to_many
   }
-}
-
-explore: products {
 
   join: vendors {
     view_label: "Vendors"
     type: left_outer
-    sql_on: ${products.vend_id}=${vendors.vend_id} ;;
+    sql_on: ${vendors.vend_id}=${products.vend_id} ;;
     relationship: one_to_many
   }
 }
+
 
 
 
