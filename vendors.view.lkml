@@ -2,6 +2,7 @@ view: vendors {
   sql_table_name: public.vendors ;;
 
   dimension: vend_address {
+    hidden: yes
     type: string
     sql: ${TABLE}.vend_address ;;
   }
@@ -32,6 +33,7 @@ view: vendors {
   }
 
   dimension: vend_zip {
+    hidden: yes
     type: string
     sql: ${TABLE}.vend_zip ;;
   }

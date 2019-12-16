@@ -2,6 +2,7 @@ view: orders {
   sql_table_name: public.orders ;;
 
   dimension: cust_id {
+    hidden: yes
     type: string
     sql: ${TABLE}.cust_id ;;
   }
@@ -22,6 +23,7 @@ view: orders {
   }
 
   dimension: order_num {
+    hidden: yes
     type: number
     sql: ${TABLE}.order_num ;;
   }

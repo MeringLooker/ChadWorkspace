@@ -22,6 +22,7 @@ view: products {
   }
 
   dimension: vend_id {
+    hidden: yes
     type: string
     sql: ${TABLE}.vend_id ;;
   }

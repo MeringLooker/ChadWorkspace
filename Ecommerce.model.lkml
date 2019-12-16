@@ -10,6 +10,39 @@ datagroup: chad_workspace_default_datagroup {
 
 persist_with: chad_workspace_default_datagroup
 
+explore: customers{
+  label: "Customers"
+
+join: orders {
+  view_label: "Orders"
+  type: left_outer
+  sql_on: ${customers.cust_id}=${orders.cust_id} ;;
+  relationship: one_to_many
+  }
+}
+explore: orderitems {
+  label: "Order Items"
+
+  join: products{
+    view_label: "Products"
+    type: left_outer
+    sql_on: ${orderitems.prod_id}=${products.prod_id} ;;
+    relationship: one_to_many
+  }
+}
+
+explore: products {
+
+  join: vendors {
+    view_label: "Vendors"
+    type: left_outer
+    sql_on: ${products.vend_id}=${vendors.vend_id} ;;
+    relationship: one_to_many
+  }
+}
+
+
+
 #explore: customers {}
 
 # - explore: adwords_ad_performance_report

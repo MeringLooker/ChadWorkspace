@@ -2,6 +2,7 @@ view: customers {
   sql_table_name: public.customers ;;
 
   dimension: cust_address {
+    hidden: yes
     type: string
     sql: ${TABLE}.cust_address ;;
   }
@@ -12,6 +13,7 @@ view: customers {
   }
 
   dimension: cust_contact {
+    hidden: yes
     type: string
     sql: ${TABLE}.cust_contact ;;
   }
@@ -22,6 +24,7 @@ view: customers {
   }
 
   dimension: cust_email {
+    hidden:  yes
     type: string
     sql: ${TABLE}.cust_email ;;
   }
@@ -42,6 +45,7 @@ view: customers {
   }
 
   dimension: cust_zip {
+    hidden: yes
     type: string
     sql: ${TABLE}.cust_zip ;;
   }
