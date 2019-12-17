@@ -7,6 +7,7 @@ view: products {
   }
 
   dimension: prod_id {
+    primary_key: yes
     type: string
     sql: ${TABLE}.prod_id ;;
   }

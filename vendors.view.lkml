@@ -18,6 +18,7 @@ view: vendors {
   }
 
   dimension: vend_id {
+    primary_key: yes
     type: string
     sql: ${TABLE}.vend_id ;;
   }
