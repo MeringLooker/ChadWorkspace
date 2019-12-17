@@ -1,6 +1,10 @@
 connection: "mc_panoply"
 include: "*.view.lkml"
 
+explore: orders {
+  group_label: "Workspace"
+
+}
 
 # include all views in this project
 # include: "my_dashboard.dashboard.lookml"   # include a LookML dashboard called my_dashboard
