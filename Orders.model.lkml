@@ -1,5 +1,5 @@
 connection: "mc_panoply"
-
+include: "*.view.lkml"
 
 
 # include all views in this project
