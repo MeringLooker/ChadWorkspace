@@ -1,13 +1,11 @@
 view: orderitems {
   sql_table_name: public.orderitems ;;
 
-dimension:comp_pk {
-  primary_key: yes
-  hidden: yes
-  type: string
-  sql:concat(${order_num},' ',${prod_id}) ;;
-
-}
+#dimension:comp_pk {
+#  primary_key: yes
+#  hidden: yes
+#  type: string
+#  sql:concat(${order_num},' ',${prod_id}) ;; }
 
 
   dimension: item_price {
@@ -21,6 +19,7 @@ dimension:comp_pk {
   }
 
   dimension: order_num {
+    primary_key: yes
     type: number
     sql: ${TABLE}.order_num ;;
   }
