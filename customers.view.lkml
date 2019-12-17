@@ -30,6 +30,7 @@ view: customers {
   }
 
   dimension: cust_id {
+    primary_key: yes
     type: string
     sql: ${TABLE}.cust_id ;;
   }

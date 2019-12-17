@@ -26,9 +26,16 @@ view: products {
     type: string
     sql: ${TABLE}.vend_id ;;
   }
-
+###  Measures  ###
   measure: count {
     type: count
     drill_fields: [prod_name]
   }
+
+  measure: price {
+    type: sum
+    value_format_name: usd
+    sql: ${TABLE}.prod_price ;;
+  }
+
 }

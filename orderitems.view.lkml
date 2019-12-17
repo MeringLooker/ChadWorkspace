@@ -12,6 +12,7 @@ view: orderitems {
   }
 
   dimension: order_num {
+    primary_key: yes
     type: number
     sql: ${TABLE}.order_num ;;
   }
@@ -25,7 +26,12 @@ view: orderitems {
     type: number
     sql: ${TABLE}.quantity ;;
   }
+### Measures ###
 
+measure: total_quantity {
+  type: sum
+  sql: ${quantity} ;;
+}
   measure: count {
     type: count
     drill_fields: []
