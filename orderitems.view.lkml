@@ -14,12 +14,12 @@ view: orderitems {
   }
 
   dimension: order_item {
+    primary_key: yes
     type: number
     sql: ${TABLE}.order_item ;;
   }
 
   dimension: order_num {
-    primary_key: yes
     type: number
     sql: ${TABLE}.order_num ;;
   }
