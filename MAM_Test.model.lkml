@@ -6,7 +6,7 @@ include: "/Facebook/**/*.view.lkml"
 include: "/Google_Analytics/**/*.view.lkml"
 include: "/TrueView/**/*.view.lkml"
 
-label: "Workspace - Mammoth Lakes Tourism"
+label: "Workspace"
 
 ######## Adwords Search ########
 explore: mam_sem{                     #name of explore
