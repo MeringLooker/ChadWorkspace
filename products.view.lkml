@@ -38,5 +38,4 @@ view: products {
     value_format_name: usd
     sql: ${TABLE}.prod_price ;;
   }
-
 }

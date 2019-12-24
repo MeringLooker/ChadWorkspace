@@ -3,6 +3,7 @@ include: "*.view.lkml"
 
 explore: orderitems {
   group_label: "Workspace"
+  label: "Order Items"
 
   join: orders {
     type: left_outer
