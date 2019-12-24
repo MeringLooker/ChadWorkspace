@@ -6,7 +6,7 @@ include: "/Facebook/**/*.view.lkml"
 include: "/Google_Analytics/**/*.view.lkml"
 include: "/TrueView/**/*.view.lkml"
 
-label: "Mammoth Lakes Tourism Test"
+label: "Workspace - Mammoth Lakes Tourism"
 
 ######## Adwords Search ########
 explore: mam_sem{                     #name of explore
@@ -19,7 +19,7 @@ explore: mam_sem{                     #name of explore
   }
   label: "Adwords Search"         ## name in dropdown for explore menu
   view_label: "Adowrds Search"    ## name in field picker
-  group_label: "Mammoth Lakes Tourism"
+  group_label: "Workspace"
 
   join: mam_ga_onsite {
       view_label: "Google Analytics"
@@ -50,7 +50,7 @@ explore: mam_gdn {
 explore: mam_fb_view {
   label: "Facebook"
   view_label: "Facebook"
-  group_label: "Mammoth Lakes Tourism"
+  group_label: "Workspace"
 
   join: facebookads__visit_mammoth_actions {
     view_label: "Facebook Actions"
@@ -127,5 +127,5 @@ explore: mam_fb_view {
 explore: mam_trueview {
   label: "YouTube"
   view_label: "YouTube"
-  group_label: "Mammoth Lakes Tourism"
+  group_label: "Workspace"
 }
