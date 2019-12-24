@@ -6,20 +6,20 @@ include: "/Facebook/**/*.view.lkml"
 include: "/Google_Analytics/**/*.view.lkml"
 include: "/TrueView/**/*.view.lkml"
 
-label: "Workspace"
+label: "Workspace"                     #label in drop down
 
 ######## Adwords Search ########
-explore: mam_sem{                     #name of explore
-  view_name: mam_sem_gdn              #view data is attached too
-  always_filter: {                    #specifies a filter that is required
+explore: mam_sem{                      #name of explore
+  view_name: mam_sem_gdn               #view data is attached too
+  always_filter: {                     #specifies a filter that is required
     filters: {
-      field: advertising_channel      #declares the field to be filtered (make a dimenison in view)
+      field: advertising_channel       #declares the field to be filtered (make a dimenison in view)
       value: "Search"
     }
   }
-  label: "Adwords Search"         ## name in dropdown for explore menu
-  view_label: "Adowrds Search"    ## name in field picker
-  group_label: "Workspace"
+  label: "Adwords Search"              ## name in dropdown for explore menu
+  view_label: "Adowrds Search"         ## name in field picker
+  group_label: "Workspace"             ## title for group in drop down
 
   join: mam_ga_onsite {
       view_label: "Google Analytics"
@@ -37,6 +37,11 @@ explore: mam_gdn {
       value: "Display"
     }
   }
+
+  label: "Adwords Display"
+  view_label: "Adwords Display"
+  group_label: "Workspace"
+
   join: mam_ga_onsite {
     view_label: "Google Analytics"
     type: left_outer
@@ -50,7 +55,7 @@ explore: mam_gdn {
 explore: mam_fb_view {
   label: "Facebook"
   view_label: "Facebook"
-  group_label: "Workspace"
+  group_label: "Workspace"        ## title for group in drop down
 
   join: facebookads__visit_mammoth_actions {
     view_label: "Facebook Actions"
@@ -127,5 +132,5 @@ explore: mam_fb_view {
 explore: mam_trueview {
   label: "YouTube"
   view_label: "YouTube"
-  group_label: "Workspace"
+  group_label: "Workspace"          ## title for group in drop down
 }
