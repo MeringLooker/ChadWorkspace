@@ -17,6 +17,22 @@ view: mam_sem_gdn {
     sql: ${ad_group_id} ||'_'|| ${day_date} ;;
   }
 
+  dimension: fiscal_year {
+    label: "Fiscal"
+    type:  string
+    group_label: "Client Dimensions"
+    sql:
+      case
+        when ${day_date} between '2015-07-01' and '2016-06-30' then 'FY 15/16'
+        when ${day_date} between '2016-07-01' and '2017-06-30' then 'FY 16/17'
+        when ${day_date} between '2017-07-01' and '2018-06-30' then 'FY 17/18'
+        when ${day_date} between '2018-07-01' and '2019-06-30' then 'FY 18/19'
+        when ${day_date} between '2019-07-01' and '2020-06-30' then 'FY 19/20'
+        else 'Uncategorized'
+        end
+      ;;
+  }
+
   dimension: advertising_channel {                            #used in the model to filter
     type: string
     label: "Channel"
@@ -29,6 +45,73 @@ view: mam_sem_gdn {
           end
         ;;
   }
+
+  dimension: campaign_layer {
+  type: string
+  label: "Campaign Layer"
+  group_label: "Client Dimension"
+  sql:
+    case
+      when ${campaign} ilike '%FY20 Winter - Traffic%' then 'Seasonal'
+      when ${campaign} ilike '%FY20 Winter - Conversion%' then 'Seasonal'
+      when ${campaign} ilike '%FY20 Winter - Air Service%' then 'Air Service'
+      when ${campaign} ilike '%FY19/20 Fall - Traffic%' then 'Seasonal'
+      when ${campaign} ilike '%FY19/20 Fall - Conversion%' then 'Seasonal'
+      else 'Uncategprized'
+      end
+      ;;
+  }
+
+  dimension: region {
+    type:  string
+    group_label: "Client Dimension"
+    sql:
+      case
+        when ${campaign} ilike '%SF' then 'San Francisco'
+        WHEN  ${campaign} ILIKE '%DEN' then 'Denver'
+        WHEN  ${campaign} ILIKE '%NE' then 'Northeast'
+        WHEN  ${campaign} ILIKE '%CA/NV' then 'California/Nevada'
+        WHEN  ${campaign} ILIKE '%SoCal' then 'Southern California'
+        WHEN  ${campaign} ILIKE '%Fresno' then 'Fresno'
+        WHEN  ${campaign} ILIKE '%Sac' then 'Sacramento'
+        WHEN  ${campaign} ILIKE '%SD' then 'San Diego'
+        WHEN  ${campaign} ILIKE '%LA' then 'Los Angeles'
+        ELSE 'Uncategorized'
+        end
+        ;;
+  }
+
+dimension: Strategy {
+  type: string
+  group_label: "Client Dimensions"
+  sql:
+    case
+      when ${ad_group} ilike 'traffic%' then 'Traffic'
+      when ${ad_group} ilike 'conversion%' then 'Conversion'
+      else 'Uncategorized'
+      end;;
+}
+dimension: Audience {
+  type: string
+  group_label: "Client Dimensions"
+  sql:
+      case
+        when ${ad_group} ilike '%Competitive Destinations' then 'Competitive Conquesting'
+        when ${ad_group} ilike '%Competitive Destinations%' then 'Competitive Conquesting'
+        when ${ad_group} ilike '%In-Market Travel' then 'In-Market Travel'
+        when ${ad_group} ilike '%InMarket Travel' then 'In-Market Travel'
+        when ${ad_group} ilike 'In-Market Travel%' then 'In-Market Travel'
+        when ${ad_group} ilike '%Ski Topics' then 'Ski Topics'
+        when ${ad_group} ilike '%Retargeting' then 'Retargeting'
+        when ${ad_group} ilike '%Retargeting%' then ''
+        when ${ad_group} ilike '%Ski Enthusiasts' then 'Ski Enthusiasts'
+        when ${ad_group} ilike '%Outdoor Enthusiasts' then 'Outdoor Enthusiasts'
+        when ${ad_group} ilike 'Outdoor Enthusiasts%' then 'Outdoor Enthusiasts'
+        when ${ad_group} ilike '%Site Visitor Lookalike' then 'Site Visitor Lookalike'
+        when ${ad_group} ilike '%Site Visitor Lookalikes' then 'Site Visitor Lookalike'
+        else 'Uncategorized'
+        end;;
+}
 
   dimension_group: __senttime {
     hidden:  yes

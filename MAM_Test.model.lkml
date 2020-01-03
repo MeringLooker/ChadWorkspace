@@ -17,8 +17,8 @@ explore: mam_sem{                      #name of explore
       value: "Search"
     }
   }
-  label: "Adwords Search"              ## name in dropdown for explore menu
-  view_label: "Adowrds Search"         ## name in field picker
+  label: "Adwords Search (Test)"              ## name in dropdown for explore menu
+  view_label: "Adowrds Search (Test)"         ## name in field picker
   group_label: "Workspace"             ## title for group in drop down
 
   join: mam_ga_onsite {
@@ -38,8 +38,8 @@ explore: mam_gdn {
     }
   }
 
-  label: "Adwords Display"
-  view_label: "Adwords Display"
+  label: "Adwords Display (Test)"
+  view_label: "Adwords Display (Test)"
   group_label: "Workspace"
 
   join: mam_ga_onsite {
@@ -53,8 +53,8 @@ explore: mam_gdn {
 ######## Facebook ########
 
 explore: mam_fb_view {
-  label: "Facebook"
-  view_label: "Facebook"
+  label: "Facebook (Test)"
+  view_label: "Facebook (Test)"
   group_label: "Workspace"        ## title for group in drop down
 
   join: facebookads__visit_mammoth_actions {
@@ -130,7 +130,14 @@ explore: mam_fb_view {
 ######## Exploring YouTube Data #########
 
 explore: mam_trueview {
-  label: "YouTube"
+  label: "YouTube (Test)"
   view_label: "YouTube"
   group_label: "Workspace"          ## title for group in drop down
+}
+
+
+explore: mam_dcm_view {
+  label: "DoubleClick (Test)"
+  view_label:"DoubleClick (Test)"
+  group_label: "Workspace"
 }
