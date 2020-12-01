@@ -174,6 +174,7 @@ view: tsy_weleda_delivery_test {
     type: sum_distinct
     sql_distinct_key: ${id} ;;
     sql: ${impressions} ;;
+    drill_fields: [date_week, total_impressions]
   }
 
   measure: total_clicks {
@@ -181,6 +182,7 @@ view: tsy_weleda_delivery_test {
     type: sum_distinct
     sql_distinct_key: ${id} ;;
     sql: ${clicks} ;;
+    drill_fields: [time*]
   }
 
   measure: click_through_rate  {
@@ -188,6 +190,7 @@ view: tsy_weleda_delivery_test {
     type: number
     sql: ${total_clicks}/nullif(${total_impressions}, 0) ;;
     value_format_name: percent_2
+    drill_fields: [date_week, click_through_rate]
   }
 
   measure: total_spend {
@@ -196,6 +199,7 @@ view: tsy_weleda_delivery_test {
     sql_distinct_key: ${id} ;;
     sql:${spend} ;;
     value_format_name: usd
+    drill_fields: [date_week, total_spend]
   }
 
   measure: cost_per_click {
@@ -217,6 +221,7 @@ view: tsy_weleda_delivery_test {
     type: sum_distinct
     sql_distinct_key: ${id} ;;
     sql: ${site_visit} ;;
+    drill_fields: [date_week, total_site_visits]
   }
 
   measure: total_engaged_users {
@@ -224,6 +229,7 @@ view: tsy_weleda_delivery_test {
     type: sum_distinct
     sql_distinct_key: ${id} ;;
     sql: ${engaged_user} ;;
+    drill_fields: [date_week, total_engaged_users]
   }
 
   measure: total_purchases {
@@ -231,12 +237,20 @@ view: tsy_weleda_delivery_test {
     type: sum_distinct
     sql_distinct_key: ${id} ;;
     sql: ${purchase} ;;
+    drill_fields: [date_week, total_purchases]
   }
-
-
 
   measure: count {
     type: count
     drill_fields: [id, creative_name]
   }
+
+  set: time  {
+    fields: [date_date,date_week]
+  }
+
+  set: metrics  {
+    fields: [total_impressions, total_clicks, total_site_visits, total_engaged_users, total_purchases, total_spend]
+  }
+
 }
