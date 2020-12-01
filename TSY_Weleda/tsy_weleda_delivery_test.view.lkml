@@ -233,8 +233,8 @@ view: tsy_weleda_delivery_test {
     sql: ${purchase} ;;
   }
 
-  # measure: count {
-  #   type: count
-  #   drill_fields: [id, creative_name]
-  # }
+  measure: count {
+    type: count
+    drill_fields: [id, creative_name]
+  }
 }
