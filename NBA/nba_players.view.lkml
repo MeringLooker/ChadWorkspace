@@ -1,5 +1,5 @@
-view: facebookads__visit_mammoth_video_p75_watched_actions {
-  sql_table_name: public.facebookads__visit mammoth_video_p75_watched_actions ;;
+view: nba_players {
+  sql_table_name: chad_workspace.nba_players ;;
   drill_fields: [id]
 
   dimension: id {
@@ -22,6 +22,11 @@ view: facebookads__visit_mammoth_video_p75_watched_actions {
     sql: ${TABLE}.__senttime ;;
   }
 
+  dimension: __state {
+    type: string
+    sql: ${TABLE}.__state ;;
+  }
+
   dimension_group: __updatetime {
     type: time
     timeframes: [
@@ -36,23 +41,29 @@ view: facebookads__visit_mammoth_video_p75_watched_actions {
     sql: ${TABLE}.__updatetime ;;
   }
 
-  dimension: action_type {
-    type: string
-    sql: ${TABLE}.action_type ;;
-  }
-
-  dimension: facebookads__visit_mammoth_id {
-    type: string
-    sql: ${TABLE}."facebookads__visit mammoth_id" ;;
-  }
-
-  dimension: value {
+  dimension: player_id {
     type: number
-    sql: ${TABLE}.value ;;
+    sql: ${TABLE}.player_id ;;
+  }
+
+  dimension: player_name {
+    type: string
+    sql: ${TABLE}.player_name ;;
+  }
+
+  dimension: season {
+    type: number
+    value_format_name: id
+    sql: ${TABLE}.season ;;
+  }
+
+  dimension: team_id {
+    type: number
+    sql: ${TABLE}.team_id ;;
   }
 
   measure: count {
     type: count
-    drill_fields: [id]
+    drill_fields: [id, player_name]
   }
 }
