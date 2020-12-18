@@ -93,6 +93,8 @@ view: tsy_weleda_delivery_test {
       year
     ]
     sql: ${TABLE}.date ;;
+    drill_fields: [tactic, campaign]
+
   }
 
   dimension: engaged_user {
@@ -171,19 +173,18 @@ view: tsy_weleda_delivery_test {
 
   measure: total_impressions {
     label: "Impressions"
-    type: sum_distinct
-    sql_distinct_key: ${id} ;;
+    type: sum
+#    sql_distinct_key: ${id} ;;
     sql: ${impressions} ;;
     drill_fields: [date_week, total_impressions]
   }
 
   measure: total_clicks {
     label: "Clicks"
-    type: sum_distinct
-    sql_distinct_key: ${id} ;;
+    type: sum
+#    sql_distinct_key: ${id} ;;
     sql: ${clicks} ;;
-    drill_fields: [time*]
-  }
+    drill_fields: [date_week, total_clicks]  }
 
   measure: click_through_rate  {
     label: "CTR"
@@ -195,8 +196,8 @@ view: tsy_weleda_delivery_test {
 
   measure: total_spend {
     label: "Spend"
-    type: sum_distinct
-    sql_distinct_key: ${id} ;;
+    type: sum
+#    sql_distinct_key: ${id} ;;
     sql:${spend} ;;
     value_format_name: usd
     drill_fields: [date_week, total_spend]
@@ -218,24 +219,24 @@ view: tsy_weleda_delivery_test {
 
   measure: total_site_visits {
     label: "Site Visits"
-    type: sum_distinct
-    sql_distinct_key: ${id} ;;
+    type: sum
+#    sql_distinct_key: ${id} ;;
     sql: ${site_visit} ;;
     drill_fields: [date_week, total_site_visits]
   }
 
   measure: total_engaged_users {
     label: "Engaged Users"
-    type: sum_distinct
-    sql_distinct_key: ${id} ;;
+    type: sum
+#    sql_distinct_key: ${id} ;;
     sql: ${engaged_user} ;;
     drill_fields: [date_week, total_engaged_users]
   }
 
   measure: total_purchases {
     label: "Purchases"
-    type: sum_distinct
-    sql_distinct_key: ${id} ;;
+    type: sum
+#    sql_distinct_key: ${id} ;;
     sql: ${purchase} ;;
     drill_fields: [date_week, total_purchases]
   }
